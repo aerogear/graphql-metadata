@@ -1,0 +1,33 @@
+{
+  "name": "graphql-annotations",
+  "version": "0.0.1",
+  "description": "Annotate a GraphQL Schema",
+  "author": "Guillaume Chau <guillaume.b.chau@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akryum/graphql-annotations.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Akryum/graphql-annotations/issues"
+  },
+  "homepage": "https://github.com/Akryum/graphql-annotations#readme",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test:unit": "jest",
+    "test:types": "tsc",
+    "test:all": "yarn run lint && yarn run test:unit && yarn run test:types",
+    "prepublishOnly": "yarn run test:all"
+  },
+  "dependencies": {
+    "safe-eval": "^0.4.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-vue-libs": "^3.0.0",
+    "jest": "^24.0.0",
+    "typescript": "^3.2.2"
+  }
+}
