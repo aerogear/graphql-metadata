@@ -3,7 +3,7 @@ const safeEval = require('safe-eval')
 /**
  * @param {string} namespace
  * @param {string?} description
- * @returns {Object.<string, any>}
+ * @returns {object}
  */
 module.exports = function (namespace, description) {
   if (description) {
