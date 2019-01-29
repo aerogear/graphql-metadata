@@ -50,6 +50,8 @@ const result = parseAnnotations('db', `
   @db.unique
   @db.index: { name: 'foo', type: 'string' }
 `)
+
+console.log(result)
 ```
 
 This will output an object containing the annotations:
