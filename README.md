@@ -1,4 +1,7 @@
 # graphql-annotations
+
+[![circleci](https://img.shields.io/circleci/project/github/Akryum/graphql-annotations/master.svg)](https://circleci.com/gh/Akryum/graphql-annotations)
+
 Annotate a GraphQL schema
 
 <p align="center">
