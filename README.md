@@ -106,3 +106,29 @@ Which will output:
 User { table: 'users' }
 id { primary: true }
 ```
+
+### Strip annotations
+
+Sometimes it will be helpful to strip the annotations from the description. For example, you may not want to display them in a GraphQL schema explorer.
+
+```js
+const { stripAnnotations } = require('graphql-annotations')
+
+const result = stripAnnotations('db', `
+  This is a description
+  @db.length: 200
+  @db.foo: 'bar'
+  @db.unique
+  @db.index: { name: 'foo', type: 'string' }
+`)
+
+console.log(result)
+```
+
+The result will be:
+
+```js
+`
+  This is a description
+`
+```

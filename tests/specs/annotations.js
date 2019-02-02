@@ -1,4 +1,4 @@
-const { parseAnnotations } = require('../..')
+const { parseAnnotations, stripAnnotations } = require('../..')
 
 test('parseAnnotations', () => {
   const result = parseAnnotations('db', `
@@ -13,4 +13,17 @@ test('parseAnnotations', () => {
   expect(result.foo).toBe('bar')
   expect(result.unique).toBe(true)
   expect(result.index).toEqual({ name: 'foo', type: 'string' })
+})
+
+test('stripAnnotations', () => {
+  const result = stripAnnotations(`
+    This is a description
+    @db.length: 200
+    @db.foo: 'bar'
+    @db.unique
+    @db.index: { name: 'foo', type: 'string' }
+  `)
+  expect(result).toBe(`
+    This is a description
+  `)
 })

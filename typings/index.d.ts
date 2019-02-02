@@ -1,1 +1,2 @@
-export function parseAnnotations (namespace: string, description: string | null) : object
+export { parseAnnotations } from './parseAnnotations'
+export { stripAnnotations } from './stripAnnotations'
