@@ -1,6 +1,6 @@
 {
   "name": "graphql-annotations",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Annotate a GraphQL Schema",
   "author": "Guillaume Chau <guillaume.b.chau@gmail.com>",
   "license": "MIT",
