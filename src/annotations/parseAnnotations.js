@@ -1,6 +1,12 @@
 const safeEval = require('safe-eval')
 
 /**
+ * Parse annotations
+ * Examples:
+ * ```
+ * @marker.test: 10
+ * ``
+ *
  * @param {string} namespace
  * @param {string?} description
  * @returns {object}
