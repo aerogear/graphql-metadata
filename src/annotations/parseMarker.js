@@ -18,13 +18,14 @@ module.exports = function (marker, description) {
     const start = `@${marker}`
     const lines = description.split('\n').map(line => line.trim())
       .filter(line => line.startsWith(start))
-    return lines.reduce((obj, line) => {
+    const resultObject = lines.reduce((obj, line) => {
       line = line.substr(start.length).trim()
       if (line === '') {
         obj = true
         return obj
       }
       const entries = line.split(',')
+
       for (const entry of entries) {
         const [key, value] = entry.split(':')
         if (key && value) {
@@ -37,6 +38,12 @@ module.exports = function (marker, description) {
       }
       return obj
     }, {})
+
+    if (Object.keys(resultObject).length === 0 && resultObject.constructor === Object) {
+      return undefined
+    }
+    
+    return resultObject;
   }
-  return {}
+  return undefined
 }
