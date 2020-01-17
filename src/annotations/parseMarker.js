@@ -42,8 +42,8 @@ module.exports = function (marker, description) {
     if (Object.keys(resultObject).length === 0 && resultObject.constructor === Object) {
       return undefined
     }
-    
-    return resultObject;
+
+    return resultObject
   }
   return undefined
 }
