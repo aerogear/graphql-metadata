@@ -9,21 +9,22 @@ const safeEval = require('safe-eval')
  *
  * @param {string} namespace
  * @param {string?} description
- * @returns {object}
+ * @returns object or undefined if description is not found
  */
 module.exports = function (namespace, description) {
   if (description) {
     const start = `@${namespace}`
     const lines = description.split('\n').map(line => line.trim())
       .filter(line => line.startsWith(start))
-    return lines.reduce((obj, line) => {
+    const result = lines.reduce((obj, line) => {
       line = line.substr(start.length + 1)
       const separatorIndex = line.indexOf(':')
       if (separatorIndex === -1) {
         if (line) {
           obj[line] = true
+        } else {
+          obj = true
         }
-        obj = true
       } else {
         const name = line.substr(0, separatorIndex).trim()
         const value = line.substr(separatorIndex + 1).trim()
@@ -35,6 +36,8 @@ module.exports = function (namespace, description) {
       }
       return obj
     }, {})
+
+    return result
   }
-  return {}
+  return {};
 }
