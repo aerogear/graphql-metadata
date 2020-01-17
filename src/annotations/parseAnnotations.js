@@ -7,14 +7,17 @@ const safeEval = require('safe-eval')
  */
 module.exports = function (namespace, description) {
   if (description) {
-    const start = `@${namespace}.`
+    const start = `@${namespace}`
     const lines = description.split('\n').map(line => line.trim())
       .filter(line => line.startsWith(start))
     return lines.reduce((obj, line) => {
-      line = line.substr(start.length)
+      line = line.substr(start.length + 1)
       const separatorIndex = line.indexOf(':')
       if (separatorIndex === -1) {
-        obj[line] = true
+        if (line) {
+          obj[line] = true
+        }
+        obj = true
       } else {
         const name = line.substr(0, separatorIndex).trim()
         const value = line.substr(separatorIndex + 1).trim()
