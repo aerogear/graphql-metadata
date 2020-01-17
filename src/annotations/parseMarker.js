@@ -22,7 +22,7 @@ module.exports = function (marker, description) {
       line = line.substr(start.length).trim()
       const entries = line.split(',')
       if (entries.length === 0) {
-        obj = true;
+        obj = true
         return obj
       }
       for (const entry of entries) {

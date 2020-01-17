@@ -81,10 +81,12 @@ User { table: 'users' }
 id { primary: true }
 ```
 
-### Parse Marker
+### Marker parsing
 
 Markers using different syntax for elements that do not support grouping.
+For example `@marker true` etc.
 
+Usage: 
 ```js
 const result = parseMarker('db', `
   This is a description
@@ -92,7 +94,7 @@ const result = parseMarker('db', `
 `)
 ```
 
-or
+No value usage:
 
 ```js
 const result = parseMarker('db', `
