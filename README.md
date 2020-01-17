@@ -81,6 +81,27 @@ User { table: 'users' }
 id { primary: true }
 ```
 
+### Parse Marker
+
+Markers using different syntax for elements that do not support grouping.
+
+```js
+const result = parseMarker('db', `
+  This is a description
+  @db length:200, unique: true 
+`)
+```
+
+or
+
+```js
+const result = parseMarker('db', `
+  This is a description
+  @db
+`)
+```
+
+
 ### Strip annotations
 
 Sometimes it will be helpful to strip the annotations from the description. For example, you may not want to display them in a GraphQL schema explorer.

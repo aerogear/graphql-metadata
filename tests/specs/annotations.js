@@ -21,22 +21,19 @@ test('parseAnnotations', () => {
   expect(result).toBeTruthy()
 })
 
-// test('parseMarker tests', () => {
-//   let result = parseMarker('marker', `
-//     This is a description
-//     @marker`)
-//   expect(Object.keys(result).length).toBe(1)
-//   console.log(result)
+test('parseMarker tests', () => {
+  let result = parseMarker('marker', `
+    This is a description
+    @marker`)
+  expect(result).toBeTruthy()
 
-//   result = parseMarker('marker', `
-//   This is a description
-//   @marker 'value'`)
-
-//   result = parseMarker('marker', `
-//   This is a description
-//   @marker [1,4,5]`)
-
-// })
+  result = parseMarker('marker', `
+  This is a description
+  @marker size:1, data:'test'`)
+  console.log(result)
+  expect(result.size).toEqual(1)
+  expect(result.data).toEqual('test')
+})
 
 test('stripAnnotations', () => {
   const result = stripAnnotations(`
