@@ -4,8 +4,8 @@ Attach metadata to your GraphQL schema using directive like syntax.
 
 Library supoports following formats:
 
-- Annotations `@db.length: 200`
-- Markers `@db length:200`
+- Annotations: Group of elements with common namespace. For example `@db.length: 200`
+- Marker: Single instance (key) with multiple values. For example `@db length:200`
 
 ## Installation
 

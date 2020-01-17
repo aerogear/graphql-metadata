@@ -16,40 +16,34 @@ const safeEval = require('safe-eval')
 module.exports = function (marker, description) {
   if (description) {
     const start = `@${marker}`
-    const lines = description.split('\n').map(line => line.trim())
-      .filter(line => line.startsWith(start))
-    const resultObject = lines.reduce((obj, line) => {
-      line = line.substr(start.length).trim()
-      if (line === '') {
-        obj = true
-        return obj
-      }
-      const entries = line.split(',')
-
-      for (const entry of entries) {
-        const [key, value] = entry.split(':')
-        if (key && value) {
-          try {
-            obj[key.trim()] = safeEval(value)
-          } catch (e) {
-            console.error(`Can't parse annotation ${line}: ${e.message}`)
-          }
-        } else if (key) {
-          try {
-            obj = safeEval(key)
-          } catch (e) {
-            console.error(`Can't parse annotation ${line}: ${e.message}`)
-          }
-        }
-      }
-      return obj
-    }, {})
-
-    if (Object.keys(resultObject).length === 0 && resultObject.constructor === Object) {
+    let line = description.split('\n').map(line => line.trim())
+      .find(line => line.startsWith(start))
+    if (!line) {
       return undefined
     }
-
-    return resultObject
+    line = line.substr(start.length).trim()
+    if (line === '') {
+      return true
+    }
+    const entries = line.split(',')
+    let obj = {}
+    for (const entry of entries) {
+      const [key, value] = entry.split(':')
+      if (key && value) {
+        try {
+          obj[key.trim()] = safeEval(value)
+        } catch (e) {
+          console.error(`Can't parse annotation ${line}: ${e.message}`)
+        }
+      } else if (key) {
+        try {
+          obj = safeEval(key)
+        } catch (e) {
+          console.error(`Can't parse annotation ${line}: ${e.message}`)
+        }
+      }
+    }
+    return obj
   }
   return undefined
 }
