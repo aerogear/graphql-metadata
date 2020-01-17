@@ -20,11 +20,11 @@ module.exports = function (marker, description) {
       .filter(line => line.startsWith(start))
     return lines.reduce((obj, line) => {
       line = line.substr(start.length).trim()
-      const entries = line.split(',')
-      if (entries.length === 0) {
+      if (line === '') {
         obj = true
         return obj
       }
+      const entries = line.split(',')
       for (const entry of entries) {
         const [key, value] = entry.split(':')
         if (key && value) {
