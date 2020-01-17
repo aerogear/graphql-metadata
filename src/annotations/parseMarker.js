@@ -34,6 +34,12 @@ module.exports = function (marker, description) {
           } catch (e) {
             console.error(`Can't parse annotation ${line}: ${e.message}`)
           }
+        } else if (key) {
+          try {
+            obj = safeEval(key)
+          } catch (e) {
+            console.error(`Can't parse annotation ${line}: ${e.message}`)
+          }
         }
       }
       return obj

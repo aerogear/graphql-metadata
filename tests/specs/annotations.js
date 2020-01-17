@@ -30,9 +30,14 @@ test('parseMarker tests', () => {
   result = parseMarker('marker', `
   This is a description
   @marker size:1, data:'test'`)
-  console.log(result)
   expect(result.size).toEqual(1)
   expect(result.data).toEqual('test')
+
+  result = parseMarker('marker', `
+  This is a description
+  @marker 1`)
+  console.log(result)
+  expect(result).toEqual(1)
 })
 
 test('stripAnnotations', () => {
