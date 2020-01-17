@@ -1,53 +1,20 @@
-# graphql-annotations
+# graphql-metadata
 
-[![circleci](https://img.shields.io/circleci/project/github/Akryum/graphql-annotations/master.svg)](https://circleci.com/gh/Akryum/graphql-annotations)
+Attach metadata to your GraphQL schema
 
-Annotate a GraphQL schema
+> NOTE: This package is an customized version of 
+https://github.com/Akryum/graphql-annotations
+If you like it please consider donating to Akryum patreon
 
 <p align="center">
   <a href="https://www.patreon.com/akryum" target="_blank">
     <img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" alt="Become a Patreon">
   </a>
 </p>
-
-## Sponsors
-
-### Gold
-
-<p align="center">
-  <a href="https://www.sumcumo.com/en/" target="_blank">
-    <img src="https://cdn.discordapp.com/attachments/258614093362102272/570728242399674380/logo-sumcumo.png" alt="sum.cumo logo" width="400px">
-  </a>
-</p>
-
-### Silver
-
-<p align="center">
-  <a href="https://vueschool.io/" target="_blank">
-    <img src="https://vueschool.io/img/logo/vueschool_logo_multicolor.svg" alt="VueSchool logo" width="200px">
-  </a>
-
-  <a href="https://www.vuemastery.com/" target="_blank">
-    <img src="https://cdn.discordapp.com/attachments/258614093362102272/557267759130607630/Vue-Mastery-Big.png" alt="Vue Mastery logo" width="200px">
-  </a>
-</p>
-
-### Bronze
-
-<p align="center">
-  <a href="https://vuetifyjs.com" target="_blank">
-    <img src="https://cdn.discordapp.com/attachments/537832759985700914/537832771691872267/Horizontal_Logo_-_Dark.png" width="100">
-  </a>
-
-  <a href="https://www.frontenddeveloperlove.com/" target="_blank" title="Frontend Developer Love">
-    <img src="https://cdn.discordapp.com/attachments/258614093362102272/557267744249085953/frontend_love-logo.png" width="56">
-  </a>
-</p>
-
 ## Installation
 
 ```bash
-npm i graphql-annotations
+npm i graphql-metadata
 ```
 
 ## Usage
@@ -57,7 +24,7 @@ npm i graphql-annotations
 Here is a very basic example with a `namespace` (here `'db'`) and a `description` that needs to be parsed:
 
 ```js
-const { parseAnnotations } = require('graphql-annotations')
+const { parseAnnotations } = require('graphql-metadata')
 
 const result = parseAnnotations('db', `
   This is a description
@@ -84,7 +51,7 @@ This will output an object containing the annotations:
 In a GraphQL schema, you can use the `description` property on `GraphQLObjectType`, `GraphQLField`...
 
 ```js
-const { parseAnnotations } = require('graphql-annotations')
+const { parseAnnotations } = require('graphql-metadata')
 const { buildSchema, isObjectType } = require('graphql')
 
 const schema = buildSchema(`
@@ -128,7 +95,7 @@ id { primary: true }
 Sometimes it will be helpful to strip the annotations from the description. For example, you may not want to display them in a GraphQL schema explorer.
 
 ```js
-const { stripAnnotations } = require('graphql-annotations')
+const { stripAnnotations } = require('graphql-metadata')
 
 const result = stripAnnotations('db', `
   This is a description
