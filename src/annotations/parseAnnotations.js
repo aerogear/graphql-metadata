@@ -39,5 +39,5 @@ module.exports = function (namespace, description) {
 
     return result
   }
-  return {};
+  return {}
 }

@@ -19,13 +19,14 @@ module.exports = function (marker, description) {
     const lines = description.split('\n').map(line => line.trim())
       .filter(line => line.startsWith(start))
     return lines.reduce((obj, line) => {
-      line = line.substr(start.length).trim();
+      line = line.substr(start.length).trim()
       const entries = line.split(',')
       if (entries.length === 0) {
-        return obj = true;
+        obj = true;
+        return obj
       }
       for (const entry of entries) {
-        const [key, value] = entry.split(':');
+        const [key, value] = entry.split(':')
         if (key && value) {
           try {
             obj[key.trim()] = safeEval(value)
