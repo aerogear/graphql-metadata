@@ -1,20 +1,35 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "checkJs": true,
-    "target": "esnext",
-    "module": "es6",
+    "outDir": "./dist",
+    "declarationDir": "./dist",
+    "declaration": true,
+    "target": "es5",
+    "module": "esnext",
+    "importHelpers": true,
     "moduleResolution": "node",
+    "jsx": "react",
+    "allowJs": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "lib": [
+      "dom",
+      "esnext",
+    ],
+    "noUnusedLocals": true,
     "skipLibCheck": true,
-    "strictNullChecks": true,
-    "noEmit": true
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    // May break autocomplete
+    "strictNullChecks": false,
   },
-  "include": [
-    "src/**/*"
-  ],
   "exclude": [
     "node_modules"
+  ],
+  "include": [
+    "src/**/*.ts",
   ]
 }

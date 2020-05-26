@@ -1,4 +1,4 @@
-const safeEval = require('safe-eval')
+import safeEval from 'safe-eval'
 
 /**
  * Parse annotations
@@ -11,7 +11,7 @@ const safeEval = require('safe-eval')
  * @param {string?} description
  * @returns object or undefined if description is not found
  */
-module.exports = function (namespace, description) {
+export function parseAnnotations (namespace: string, description: string) {
   if (description) {
     const start = `@${namespace}`
     const lines = description.split('\n').map(line => line.trim())

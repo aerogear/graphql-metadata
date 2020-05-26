@@ -1,7 +1,7 @@
 /**
  * @param {string?} description
  */
-module.exports = function (description) {
+export function stripAnnotations(description: string) {
   if (description) {
     let lines = description.split('\n')
     lines = lines.filter(line => !line.trim().startsWith('@'))
