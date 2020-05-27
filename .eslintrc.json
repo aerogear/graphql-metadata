@@ -1,0 +1,16 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "node",
+    "@typescript-eslint",
+    "import"
+  ],
+  "env": {
+    "jest": true,
+    "es6": true
+  }
+}
