@@ -1,3 +1,3 @@
-export { parseAnnotations } from './annotations/parseAnnotations'
-export { stripAnnotations } from './annotations/stripAnnotations'
-export { parseMarker } from './annotations/parseMarker'
+export * from './annotations/parseAnnotations'
+export * from './annotations/stripAnnotations'
+export * from './annotations/parseMarker'

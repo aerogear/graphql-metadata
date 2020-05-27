@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
+    "rootDir": "./src",
     "outDir": "./dist",
     "declarationDir": "./dist",
     "declaration": true,
-    "target": "es5",
-    "module": "esnext",
+    "target": "es2017",
+    "module": "commonjs",
     "importHelpers": true,
     "moduleResolution": "node",
     "jsx": "react",
@@ -16,6 +17,8 @@
     "lib": [
       "dom",
       "esnext",
+      "es2017",
+      "esnext.asynciterable"
     ],
     "noUnusedLocals": true,
     "skipLibCheck": true,
@@ -27,7 +30,8 @@
     "strictNullChecks": false,
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ],
   "include": [
     "src/**/*.ts",
