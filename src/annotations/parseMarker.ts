@@ -1,4 +1,4 @@
-const safeEval = require('safe-eval')
+import safeEval from 'safe-eval'
 
 /**
  * Parse marker annotations.
@@ -13,7 +13,7 @@ const safeEval = require('safe-eval')
  * @param {string?} description
  * @returns {object}
  */
-module.exports = function (marker, description) {
+export function parseMarker(marker: string, description: string): object | undefined | boolean {
   if (description) {
     const start = `@${marker}`
     let line = description.split('\n').map(line => line.trim())
