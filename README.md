@@ -6,6 +6,7 @@ Library supoports following formats:
 
 - Annotations: Group of elements with common namespace. For example `@db.length: 200`
 - Marker: Single instance (key) with multiple values. For example `@db length:200`
+- Metadata: Directive-like config. For example `@db(length: 200, columns: ['id', 'name'])`
 
 ## Installation
 
@@ -106,6 +107,44 @@ const result = parseMarker('db', `
   This is a description
   @db
 `)
+```
+
+### Metadata parsing
+
+Metadata uses the same syntax as GraphQL directives.
+
+Usage: 
+
+```js
+const field: GraphQLField<any,any> = {
+  ...,
+  description: `@db(length:200, 
+      unique: true, 
+      columns: ['id', 'name']
+      description: 'Some description'
+    )`
+}
+const result = parseMetadata('db', field)
+
+// Returns:
+{
+  length:200, 
+  unique: true, 
+  columns: ['id', 'name']
+  description: 'Some description'
+}
+```
+
+No value usage:
+
+```js
+const field: GraphQLField<any,any> = {
+  ...,
+  description: '@db',
+}
+const result = parseMetadata('db', field)
+
+// Returns true
 ```
 
 

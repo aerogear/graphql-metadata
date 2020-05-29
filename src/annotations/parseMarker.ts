@@ -1,4 +1,5 @@
 import safeEval from 'safe-eval'
+import { TypeOrDescription } from 'src/definitions'
 
 /**
  * Parse marker annotations.
@@ -10,10 +11,17 @@ import safeEval from 'safe-eval'
  * ``
  *
  * @param {string} marker
- * @param {string?} description
+ * @param {TypeOrDescription|string} description
  * @returns {object}
  */
-export function parseMarker(marker: string, description: string): object | undefined | boolean {
+export function parseMarker(marker: string, definition: TypeOrDescription): any | boolean {
+  let description: string;
+  if (typeof definition === "string") {
+    description = definition;
+  } else {
+    description = definition.description
+  }
+
   if (description) {
     const start = `@${marker}`
     let line = description.split('\n').map(line => line.trim())
