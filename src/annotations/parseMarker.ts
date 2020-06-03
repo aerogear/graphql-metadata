@@ -1,5 +1,7 @@
 import safeEval from 'safe-eval'
 import { TypeOrDescription } from 'src/definitions'
+import { getDescription } from '../util/getDescription';
+import Maybe from 'graphql/tsutils/Maybe';
 
 /**
  * Parse marker annotations.
@@ -14,12 +16,10 @@ import { TypeOrDescription } from 'src/definitions'
  * @param {TypeOrDescription|string} description
  * @returns {object}
  */
-export function parseMarker(marker: string, definition: TypeOrDescription): any | boolean {
-  let description: string;
-  if (typeof definition === "string") {
-    description = definition;
-  } else {
-    description = definition.description
+export function parseMarker(marker: string, definition: Maybe<TypeOrDescription>): any | boolean {
+  const description = getDescription(definition)
+  if (!description) {
+    return undefined
   }
 
   if (description) {
