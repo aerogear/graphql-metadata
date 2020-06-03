@@ -1,3 +1,9 @@
+#### 0.6.1 (2020-06-03)
+
+##### Bug Fixes
+
+*  fix: return undefined when no description on field ([bdafde6](https://github.com/aerogear/graphql-metadata/commit/bdafde62145af5406f7e9fdb31a4045c0bcf4cfa))
+
 #### 0.6.0 (2020-06-03)
 
 ##### Build System / Dependencies
