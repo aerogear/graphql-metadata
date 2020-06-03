@@ -1,7 +1,8 @@
-const { parseAnnotations, stripAnnotations, parseMarker } = require('../../src/index')
+import { parseAnnotations, stripAnnotations, parseMarker } from '../../src/index'
+import { GraphQLField, GraphQLString } from 'graphql'
 
 test('parseAnnotations', () => {
-  let result = parseAnnotations('db', `
+  let result: any = parseAnnotations('db', `
     This is a description
     @db.length: 200
     @db.foo: 'bar'
@@ -22,7 +23,7 @@ test('parseAnnotations', () => {
 })
 
 test('parseMarker tests', () => {
-  let result = parseMarker('marker', `
+  let result: any = parseMarker('marker', `
     This is a description
     @marker`)
   expect(result).toBeTruthy()
@@ -38,6 +39,18 @@ test('parseMarker tests', () => {
   @marker 1`)
   console.log(result)
   expect(result).toEqual(1)
+
+  const testField: GraphQLField<any, any> = {
+    name: 'testField',
+    description: '@marker',
+    type: GraphQLString,
+    args: undefined,
+    extensions: undefined,
+    isDeprecated: false,
+    deprecationReason: undefined
+  }
+  result = parseMarker('marker', testField)
+  expect(result).toEqual(true)
 })
 
 test('stripAnnotations', () => {
