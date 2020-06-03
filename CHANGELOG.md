@@ -1,3 +1,9 @@
+#### 0.6.2 (2020-06-03)
+
+##### Bug Fixes
+
+* **deps:**  move graphql to devDependency ([2f0c271a](https://github.com/aerogear/graphql-metadata/commit/2f0c271aad7ac4724b3d1e12bea98ff9dce2a90c))
+
 #### 0.6.1 (2020-06-03)
 
 ##### Bug Fixes
