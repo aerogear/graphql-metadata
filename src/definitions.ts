@@ -1,4 +1,4 @@
-import { GraphQLField, GraphQLObjectType, GraphQLEnumType, GraphQLInputField, GraphQLInputObjectType, GraphQLEnumValue, GraphQLInterfaceType, GraphQLScalarType, GraphQLArgument, GraphQLUnionType, getNamedType } from 'graphql'
+import { GraphQLField, GraphQLObjectType, GraphQLEnumType, GraphQLInputField, GraphQLInputObjectType, GraphQLEnumValue, GraphQLInterfaceType, GraphQLScalarType, GraphQLArgument, GraphQLUnionType } from 'graphql'
 
 export type TypeDefinition =
   | GraphQLField<any, any>
