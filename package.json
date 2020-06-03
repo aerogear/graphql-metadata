@@ -21,7 +21,7 @@
     "lint": "eslint ./src/**/*.ts",
     "test": "jest",
     "test:types": "tsc",
-    "test:all": "yarn run lint && yarn run test:unit && yarn run test:types",
+    "test:all": "yarn run lint && yarn run test && yarn run test:types",
     "prepublishOnly": "yarn run test:all"
   },
   "dependencies": {
