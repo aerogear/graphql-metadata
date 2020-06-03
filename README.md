@@ -16,6 +16,66 @@ npm i graphql-metadata
 
 ## Usage
 
+### Marker parsing
+
+Markers using different syntax for elements that do not support grouping.
+For example `@marker true` etc.
+
+Usage: 
+```js
+const result = parseMarker('db', `
+  This is a description
+  @db length:200, unique: true 
+`)
+```
+
+No value usage:
+
+```js
+const result = parseMarker('db', `
+  This is a description
+  @db
+`)
+```
+
+### Metadata parsing
+
+Metadata uses the same syntax as GraphQL directives.
+
+Usage: 
+
+```js
+const field: GraphQLField<any,any> = {
+  ...,
+  description: `@db(length:200, 
+      unique: true, 
+      columns: ['id', 'name']
+      description: 'Some description'
+    )`
+}
+const result = parseMetadata('db', field)
+
+// Returns:
+{
+  length:200, 
+  unique: true, 
+  columns: ['id', 'name']
+  description: 'Some description'
+}
+```
+
+No value usage:
+
+```js
+const field: GraphQLField<any,any> = {
+  ...,
+  description: '@db',
+}
+const result = parseMetadata('db', field)
+
+// Returns true
+```
+
 ### [DEPRECATED] Annotations parsing
 
 Here is a very basic example with a `namespace` (here `'db'`) and a `description` that needs to be parsed:
@@ -85,66 +145,6 @@ Which will output:
 ```js
 User { table: 'users' }
 id { primary: true }
-```
-
-### Marker parsing
-
-Markers using different syntax for elements that do not support grouping.
-For example `@marker true` etc.
-
-Usage: 
-```js
-const result = parseMarker('db', `
-  This is a description
-  @db length:200, unique: true 
-`)
-```
-
-No value usage:
-
-```js
-const result = parseMarker('db', `
-  This is a description
-  @db
-`)
-```
-
-### Metadata parsing
-
-Metadata uses the same syntax as GraphQL directives.
-
-Usage: 
-
-```js
-const field: GraphQLField<any,any> = {
-  ...,
-  description: `@db(length:200, 
-      unique: true, 
-      columns: ['id', 'name']
-      description: 'Some description'
-    )`
-}
-const result = parseMetadata('db', field)
-
-// Returns:
-{
-  length:200, 
-  unique: true, 
-  columns: ['id', 'name']
-  description: 'Some description'
-}
-```
-
-No value usage:
-
-```js
-const field: GraphQLField<any,any> = {
-  ...,
-  description: '@db',
-}
-const result = parseMetadata('db', field)
-
-// Returns true
 ```
 
 
