@@ -1,4 +1,6 @@
 import safeEval from 'safe-eval'
+import chalk from 'chalk'
+
 
 /**
  * Parse annotations
@@ -13,7 +15,10 @@ import safeEval from 'safe-eval'
  * @deprecated This method is deprecated and will be removed in a future release. Please use `parseMetadata`
  */
 export function parseAnnotations (namespace: string, description: string) {
-  console.warn('WARNING! This method is deprecated and will be removed in a future release. Please use `parseMetadata`.')
+  console.warn(`${chalk.yellow('WARNING!')} ${chalk.cyan('parseAnnotations')} method is deprecated and will be removed in a future release. Please use ${chalk.cyan('parseMetadata')}.
+
+See ${chalk.blue('https://github.com/aerogear/graphql-metadata#metadata-parsing')}
+`)
 
   if (description) {
     const start = `@${namespace}`

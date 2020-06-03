@@ -28,6 +28,9 @@ test('parseMarker tests', () => {
     @marker`)
   expect(result).toBeTruthy()
 
+  result = parseMarker('marker', undefined)
+  expect(result).toEqual(undefined)
+
   result = parseMarker('marker', `
   This is a description
   @marker size:1, data:'test'`)
@@ -40,7 +43,7 @@ test('parseMarker tests', () => {
   console.log(result)
   expect(result).toEqual(1)
 
-  const testField: GraphQLField<any, any> = {
+  let testField: GraphQLField<any, any> = {
     name: 'testField',
     description: '@marker',
     type: GraphQLString,
@@ -51,6 +54,18 @@ test('parseMarker tests', () => {
   }
   result = parseMarker('marker', testField)
   expect(result).toEqual(true)
+
+  testField = {
+    name: 'testField',
+    description: undefined,
+    type: GraphQLString,
+    args: undefined,
+    extensions: undefined,
+    isDeprecated: false,
+    deprecationReason: undefined
+  }
+  result = parseMarker('marker', testField)
+  expect(result).toEqual(undefined)
 })
 
 test('stripAnnotations', () => {

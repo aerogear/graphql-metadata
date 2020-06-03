@@ -1,5 +1,7 @@
 import { GraphQLField, GraphQLObjectType, GraphQLEnumType, GraphQLInputField, GraphQLInputObjectType, GraphQLEnumValue, GraphQLInterfaceType, GraphQLScalarType, GraphQLArgument, GraphQLUnionType } from 'graphql'
 
+export type Maybe<T> = T | undefined;
+
 export type TypeDefinition =
   | GraphQLField<any, any>
   | GraphQLScalarType

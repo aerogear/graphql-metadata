@@ -23,6 +23,14 @@ test('parse blank metadata', () => {
   expect(result).toEqual(true)
 })
 
+test('return undefined when no metadata', () => {
+  const field = setupField('This is a description')
+
+  const result = parseMetadata('test', field)
+
+  expect(result).toEqual(undefined)
+})
+
 test('validate invalid metadata', () => {
   const field = setupField(`This is a description
     @test here is some text that does not belong

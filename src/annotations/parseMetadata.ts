@@ -1,5 +1,7 @@
 import safeEval from 'safe-eval'
 import { TypeDefinition } from 'src/definitions'
+import Maybe from 'graphql/tsutils/Maybe'
+import { getDescription } from '../util/getDescription'
 
 /**
  * Parse metadata annotations.
@@ -15,8 +17,8 @@ import { TypeDefinition } from 'src/definitions'
  * @param {TypeDefinition|string?} definition The GraphQL definition which has the metadata to be parsed
  * @returns {any|boolean}
  */
-export function parseMetadata(name: string, definition: TypeDefinition): any | boolean {
-  const description = definition.description
+export function parseMetadata(name: string, definition: Maybe<TypeDefinition>): any | boolean {
+  const description = getDescription(definition)
 
   if (description) {
     const start = `@${name}`
