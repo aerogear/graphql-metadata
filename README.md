@@ -4,7 +4,7 @@ Attach metadata to your GraphQL schema using directive like syntax.
 
 Library supoports following formats:
 
-- Annotations: Group of elements with common namespace. For example `@db.length: 200`
+- (**DEPRECATED**) Annotations: Group of elements with common namespace. For example `@db.length: 200`
 - Marker: Single instance (key) with multiple values. For example `@db length:200`
 - Metadata: Directive-like config. For example `@db(length: 200, columns: ['id', 'name'])`
 
@@ -16,7 +16,7 @@ npm i graphql-metadata
 
 ## Usage
 
-### Annotations parsing
+### [DEPRECATED] Annotations parsing
 
 Here is a very basic example with a `namespace` (here `'db'`) and a `description` that needs to be parsed:
 
@@ -173,15 +173,3 @@ The result will be:
   This is a description
 `
 ```
-
-## Relation to GraphQL-Annotations
-
-> NOTE: This package is an customized version of 
-https://github.com/Akryum/graphql-annotations
-If you like it please consider donating to Akryum patreon
-
-<p align="center">
-  <a href="https://www.patreon.com/akryum" target="_blank">
-    <img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" alt="Become a Patreon">
-  </a>
-</p>

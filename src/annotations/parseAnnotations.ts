@@ -10,8 +10,11 @@ import safeEval from 'safe-eval'
  * @param {string} namespace
  * @param {string?} description
  * @returns object or undefined if description is not found
+ * @deprecated This method is deprecated and will be removed in a future release. Please use `parseMetadata`
  */
 export function parseAnnotations (namespace: string, description: string) {
+  console.warn('WARNING! This method is deprecated and will be removed in a future release. Please use `parseMetadata`.')
+
   if (description) {
     const start = `@${namespace}`
     const lines = description.split('\n').map(line => line.trim())
