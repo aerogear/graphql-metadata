@@ -1,5 +1,4 @@
 import safeEval from 'safe-eval'
-import chalk from 'chalk'
 
 
 /**
