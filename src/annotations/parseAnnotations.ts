@@ -12,14 +12,9 @@ import chalk from 'chalk'
  * @param {string} namespace
  * @param {string?} description
  * @returns object or undefined if description is not found
- * @deprecated This method is deprecated and will be removed in a future release. Please use `parseMetadata`
+ * @deprecated This method is deprecated and will be removed in a future release. Please use `parseMetadata`. See https://github.com/aerogear/graphql-metadata#metadata-parsing
  */
 export function parseAnnotations (namespace: string, description: string) {
-  console.warn(`${chalk.yellow('WARNING!')} ${chalk.cyan('parseAnnotations')} method is deprecated and will be removed in a future release. Please use ${chalk.cyan('parseMetadata')}.
-
-See ${chalk.blue('https://github.com/aerogear/graphql-metadata#metadata-parsing')}
-`)
-
   if (description) {
     const start = `@${namespace}`
     const lines = description.split('\n').map(line => line.trim())
