@@ -1,3 +1,7 @@
+#### 0.6.3 (2020-06-08)
+
+* remove deprecation warning from console ([11ea03a])(https://github.com/aerogear/graphql-metadata/commit/11ea03ae2215d487d86e554a7a3317fa9a5ba2e9)
+
 #### 0.6.2 (2020-06-03)
 
 ##### Bug Fixes
