@@ -76,6 +76,12 @@ const result = parseMetadata('db', field)
 // Returns true
 ```
 
+Or with a string:
+
+```js
+const result = parseMetadata('db', '@db(name: "users")')
+```
+
 ### [DEPRECATED] Annotations parsing
 
 Here is a very basic example with a `namespace` (here `'db'`) and a `description` that needs to be parsed:

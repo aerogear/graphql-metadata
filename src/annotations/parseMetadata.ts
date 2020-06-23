@@ -1,5 +1,5 @@
 import safeEval from 'safe-eval'
-import { TypeDefinition } from 'src/definitions'
+import { TypeOrDescription } from 'src/definitions'
 import Maybe from 'graphql/tsutils/Maybe'
 import { getDescription } from '../util/getDescription'
 
@@ -14,11 +14,15 @@ import { getDescription } from '../util/getDescription'
  * ``
  *
  * @param {string} name - The name of the metadata to be parsed
- * @param {TypeDefinition|string?} definition The GraphQL definition which has the metadata to be parsed
+ * @param {TypeOrDescriptionDefinition|string} definition The GraphQL definition which has the metadata to be parsed
  * @returns {any|boolean}
  */
-export function parseMetadata(name: string, definition: Maybe<TypeDefinition>): any | boolean {
+export function parseMetadata(name: string, definition: Maybe<TypeOrDescription>): any | boolean {
   const description = getDescription(definition)
+
+  if (!description) {
+    return undefined
+  }
 
   if (description) {
     const start = `@${name}`
@@ -36,8 +40,9 @@ export function parseMetadata(name: string, definition: Maybe<TypeDefinition>): 
     const openingTag = '('
     const closingTag = ')'
 
+    const maybeOwner = typeof definition === 'string' ? '' : ` on ${definition.name}`
     if (!line.startsWith(openingTag)) {
-      console.error(`Can't parse "@${name} annotation on ${definition.name}: Expected opening tag "${openingTag}"`)
+      console.error(`Can't parse "@${name} annotation${maybeOwner}: Expected opening tag "${openingTag}"`)
     }
 
     const startPosition = description.indexOf(line)
@@ -45,7 +50,7 @@ export function parseMetadata(name: string, definition: Maybe<TypeDefinition>): 
     const endPosition = startContent.indexOf(')')
 
     if (endPosition === -1) {
-      console.error(`Can't parse "@${name} annotation: Expected closing tag "${closingTag}"`)
+      console.error(`Can't parse "@${name} annotation${maybeOwner}: Expected closing tag "${closingTag}"`)
 
       return undefined
     }
@@ -57,7 +62,7 @@ export function parseMetadata(name: string, definition: Maybe<TypeDefinition>): 
     try {
       parsedContent = safeEval(enclosedContent)
     } catch (e) {
-      console.error(`Can't parse "@${name}" annotation on ${definition.name}: ${e.message}`)
+      console.error(`Can't parse "@${name}" annotation${maybeOwner}: ${e.message}`)
     }
 
     return parsedContent
