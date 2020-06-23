@@ -84,7 +84,23 @@ test('fail to parse metadata with missing closing tag', () => {
 test('fail to parse metadata with an undefined value', () => {
   const field = setupField('@invalid(reason: undefinedVariable)')
 
-  const result = parseMetadata('invalid', field)
+  const result = parseMetadata('valid', field)
+
+  expect(result).toBeUndefined()
+});
+
+test('parse metadata from string description', () => {
+  const description = '@valid(reason: "This is a valid way to parse metadata")'
+
+  const result = parseMetadata('valid', description)
+
+  expect(result).toEqual({
+    reason: 'This is a valid way to parse metadata'
+  })
+});
+
+test('return undefined when no annotation found', () => {
+  const result = parseMetadata('valid', '')
 
   expect(result).toBeUndefined()
 });

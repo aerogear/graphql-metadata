@@ -40,7 +40,6 @@ test('parseMarker tests', () => {
   result = parseMarker('marker', `
   This is a description
   @marker 1`)
-  console.log(result)
   expect(result).toEqual(1)
 
   let testField: GraphQLField<any, any> = {
