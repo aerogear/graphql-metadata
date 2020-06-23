@@ -1,6 +1,10 @@
+#### 0.7.0 (2020-06-23)
+
+* let users supply a string to `parseMetadata` to be parsed ([3d0df66](https://github.com/aerogear/graphql-metadata/commit/3d0df6615c1b90f8c7964dcf41bcbeab9f59a77c)
+
 #### 0.6.3 (2020-06-08)
 
-* remove deprecation warning from console ([11ea03a])(https://github.com/aerogear/graphql-metadata/commit/11ea03ae2215d487d86e554a7a3317fa9a5ba2e9)
+* remove deprecation warning from console ([11ea03a](https://github.com/aerogear/graphql-metadata/commit/11ea03ae2215d487d86e554a7a3317fa9a5ba2e9)
 
 #### 0.6.2 (2020-06-03)
 
