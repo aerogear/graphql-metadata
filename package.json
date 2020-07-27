@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/aerogear/graphql-metadata/#readme",
   "main": "dist/index.js",
-  "types": "types/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -b",
     "watch": "tsc -w",
