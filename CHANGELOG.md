@@ -1,3 +1,7 @@
+#### 0.7.1 (2020-07-27)
+
+* bundle type declarations with published npm package ([ed0459f](https://github.com/aerogear/graphql-metadata/pull/23/commits/ed0459ff53d226132615e958c97ae98c8cb8ac43))
+
 #### 0.7.0 (2020-06-23)
 
 * let users supply a string to `parseMetadata` to be parsed ([3d0df66](https://github.com/aerogear/graphql-metadata/commit/3d0df6615c1b90f8c7964dcf41bcbeab9f59a77c)
