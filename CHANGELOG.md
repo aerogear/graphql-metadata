@@ -1,4 +1,19 @@
+#### 0.7.3 (2020-07-28)
+
+#### Bug Fixes
+
+* import using relative path ([b50325f](https://github.com/aerogear/graphql-metadata/commit/b50325f3c70f332117bffd4a3914c76a4df15b42))
+* use `Maybe` util from local project instead of from GraphQL ([b50325f](https://github.com/aerogear/graphql-metadata/commit/b50325f3c70f332117bffd4a3914c76a4df15b42))
+
+#### 0.7.2 (2020-07-27)
+
+#### Bug Fixes
+
+* remove extra files from published package ([9df0d05](https://github.com/aerogear/graphql-metadata/commit/9df0d05f2b89dc21c7e900afc3bc6cd2f2801b5d))
+
 #### 0.7.1 (2020-07-27)
+
+#### Bug Fixes
 
 * bundle type declarations with published npm package ([ed0459f](https://github.com/aerogear/graphql-metadata/pull/23/commits/ed0459ff53d226132615e958c97ae98c8cb8ac43))
 
