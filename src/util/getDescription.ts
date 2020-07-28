@@ -1,5 +1,4 @@
-import { TypeOrDescription } from '../definitions'
-import Maybe from 'graphql/tsutils/Maybe';
+import { TypeOrDescription, Maybe } from '../definitions'
 
 /**
  * Helper to extract the description value from a possible GraphQL type

@@ -1,6 +1,5 @@
 import safeEval from 'safe-eval'
-import { TypeOrDescription } from 'src/definitions'
-import Maybe from 'graphql/tsutils/Maybe'
+import { TypeOrDescription, Maybe } from '../definitions'
 import { getDescription } from '../util/getDescription'
 
 /**

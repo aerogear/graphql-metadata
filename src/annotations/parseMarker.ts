@@ -1,7 +1,6 @@
 import safeEval from 'safe-eval'
-import { TypeOrDescription } from 'src/definitions'
+import { TypeOrDescription, Maybe } from '../definitions'
 import { getDescription } from '../util/getDescription';
-import Maybe from 'graphql/tsutils/Maybe';
 
 /**
  * Parse marker annotations.
