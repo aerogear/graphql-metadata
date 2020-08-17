@@ -1,4 +1,4 @@
-import safeEval from 'safe-eval'
+import { safeEvaluate }  from '../util/safe-evaluate'
 import { TypeOrDescription, Maybe } from '../definitions'
 import { getDescription } from '../util/getDescription';
 
@@ -38,13 +38,13 @@ export function parseMarker(marker: string, definition: Maybe<TypeOrDescription>
       const [key, value] = entry.split(':')
       if (key && value) {
         try {
-          obj[key.trim()] = safeEval(value)
+          obj[key.trim()] = safeEvaluate(value)
         } catch (e) {
           console.error(`Can't parse annotation ${line}: ${e.message}`)
         }
       } else if (key) {
         try {
-          obj = safeEval(key)
+          obj = safeEvaluate(key)
         } catch (e) {
           console.error(`Can't parse annotation ${line}: ${e.message}`)
         }
