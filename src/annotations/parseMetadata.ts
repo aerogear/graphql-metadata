@@ -1,4 +1,4 @@
-import safeEval from 'safe-eval'
+import { safeEvaluate }  from '../util/safe-evaluate'
 import { TypeOrDescription, Maybe } from '../definitions'
 import { getDescription } from '../util/getDescription'
 
@@ -59,7 +59,7 @@ export function parseMetadata(name: string, definition: Maybe<TypeOrDescription>
 
     let parsedContent: any;
     try {
-      parsedContent = safeEval(enclosedContent)
+      parsedContent = safeEvaluate(enclosedContent)
     } catch (e) {
       console.error(`Can't parse "@${name}" annotation${maybeOwner}: ${e.message}`)
     }

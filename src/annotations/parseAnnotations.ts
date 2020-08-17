@@ -1,4 +1,4 @@
-import safeEval from 'safe-eval'
+import { safeEvaluate }  from '../util/safe-evaluate'
 
 
 /**
@@ -31,7 +31,7 @@ export function parseAnnotations (namespace: string, description: string) {
         const name = line.substr(0, separatorIndex).trim()
         const value = line.substr(separatorIndex + 1).trim()
         try {
-          obj[name] = safeEval(value)
+          obj[name] = safeEvaluate(value)
         } catch (e) {
           console.error(`Can't parse annotation ${line}: ${e.message}`)
         }
