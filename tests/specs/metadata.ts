@@ -100,7 +100,32 @@ test('parse metadata from string description', () => {
 });
 
 test('return undefined when no annotation found', () => {
-  const result = parseMetadata('valid', '')
+  const result = parseMetadata('valid', '');
 
-  expect(result).toBeUndefined()
+  expect(result).toBeUndefined();
 });
+
+test('return undefined when annotation does not full match the given ', () => {
+  let result = parseMetadata('test', '@test-test');
+  expect(result).toBeUndefined();
+
+  result = parseMetadata('test', '@test_test');
+  expect(result).toBeUndefined();
+
+  result = parseMetadata('test', '@test_()');
+  expect(result).toBeUndefined();
+})
+
+
+test('matches right annotation when parsing description with several annotations having a common prefix', () => {
+  let result = parseMetadata('test-test',
+  `@test
+  @test-test(value: 1)`);
+
+  expect(result).toEqual({value: 1});
+
+  result = parseMetadata('test', `@test_test
+  @test(value: 2)
+  `);
+  expect(result).toEqual({ value: 2 });
+})

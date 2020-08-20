@@ -24,14 +24,28 @@ export function parseMetadata(name: string, definition: Maybe<TypeOrDescription>
   }
 
   if (description) {
-    const start = `@${name}`
+    const annotation = `@${name}`;
+    const regex = new RegExp(`${annotation}\\s*\\(.*\\)?$`);
+    const lines = description.split('\n');
+    let line: string;
 
-    let line = description.split('\n').map(line => line.trim())
-      .find(line => line.startsWith(start))
+    for (const rawLine of lines) {
+      const trimmed = rawLine.trim();
+      if (!trimmed.length) {
+        continue;
+      }
+
+      if (annotation === trimmed || regex.test(trimmed)) {
+        line = trimmed;
+        break;
+      }
+    }
+
     if (!line) {
       return undefined
     }
-    line = line.substr(start.length).trim()
+
+    line = line.substr(annotation.length).trim()
     if (line === '') {
       return true
     }
