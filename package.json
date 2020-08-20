@@ -22,7 +22,8 @@
     "test": "jest",
     "test:types": "tsc",
     "test:all": "yarn run lint && yarn run test && yarn run test:types",
-    "prepublishOnly": "yarn run test:all"
+    "release:validate": "./scripts/validateRelease.sh",
+    "release:publish": "./scripts/publishRelease.sh"
   },
   "dependencies": {
     "vm2": "3.9.2"
