@@ -1,3 +1,9 @@
+#### 0.7.4 (2020-08-20)
+
+#### Bug Fixes
+
+* remove `safe-eval` to fix `Sandbox Breakout / Arbitrary Code Execution` vulnerability ([831011a](https://github.com/aerogear/graphql-metadata/commit/831011ac7ffd87b20abd22797564822f291b024e))
+
 #### 0.7.3 (2020-07-28)
 
 #### Bug Fixes
