@@ -2,3 +2,6 @@
 .vscode
 node_modules
 tests
+.github
+scripts
+release-guide.md
