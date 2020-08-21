@@ -1,3 +1,9 @@
+#### 0.7.5 (2020-08-21)
+
+#### Bug Fixes
+
+* Annotations detection not working when the same keys ([3c7cd89](https://github.com/aerogear/graphql-metadata/commit/3c7cd8903c114cbb0ff59d5047479fb243925c69))
+ 
 #### 0.7.4 (2020-08-20)
 
 #### Bug Fixes
