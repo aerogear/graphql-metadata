@@ -8,12 +8,11 @@ on:
       - '*'
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [10.x, 12.x, 14.x]
-
     steps:
     - name: Checkout master
       uses: actions/checkout@v2
@@ -30,8 +29,6 @@ jobs:
     - name: Install dependencies
       if: steps.cache-modules.outputs.cache-hit != 'true'
       run: yarn install
-    - name: Build
-      run: yarn build
     - name: Lint
       run: yarn lint
     - name: Test Types
@@ -41,7 +38,7 @@ jobs:
 
   publish:
     name: Publish
-    needs: build
+    needs: test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -54,7 +51,8 @@ jobs:
     - name: Install dependencies
       if: steps.cache-modules.outputs.cache-hit != 'true'
       run: yarn install
-    
+    - name: Build
+      run: yarn build
     - name: Create .npmrc
       run: echo "//registry.npmjs.org/:_authToken=${{secrets.NPM_AUTH_TOKEN}}" > ~/.npmrc
     - name: Publish to npm
