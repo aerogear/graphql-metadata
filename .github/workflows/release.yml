@@ -1,0 +1,61 @@
+name: "tagged-release"
+
+on:
+  release:
+    types: [released, prereleased]
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+
+    steps:
+    - name: Checkout master
+      uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Cache node_modules
+      id: cache-modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ matrix.node-version }}-${{ runner.OS }}-build-${{ hashFiles('package.json') }}
+    - name: Install dependencies
+      if: steps.cache-modules.outputs.cache-hit != 'true'
+      run: yarn install
+    - name: Build
+      run: yarn build
+    - name: Lint
+      run: yarn lint
+    - name: Test Types
+      run: yarn test:types
+    - name: Test
+      run: yarn test
+
+  publish:
+    name: Publish
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cache node_modules
+      id: cache-modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: 12.x-${{ runner.OS }}-build-${{ hashFiles('package.json') }}
+    - name: Install dependencies
+      if: steps.cache-modules.outputs.cache-hit != 'true'
+      run: yarn install
+    
+    - name: Create .npmrc
+      run: echo "//registry.npmjs.org/:_authToken=${{secrets.NPM_AUTH_TOKEN}}" > ~/.npmrc
+    - name: Publish to npm
+      run: TAG=${GITHUB_REF#"refs/tags/"} PRE_RELEASE=${{github.event.release.prerelease}} npm run release:publish
