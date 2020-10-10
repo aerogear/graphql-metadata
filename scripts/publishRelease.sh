@@ -13,6 +13,15 @@ if [ ! "$CI" = true ]; then
   exit 1
 fi
 
+if [[ -z "${GITHUB_AUTH}" ]]; then
+  echo "\033[0;33mWarning: GitHub Token not set for lerna-changelog package. See https://github.com/lerna/lerna-changelog#github-token\033[0m"
+fi
+
+# print CHANGELOG from PRs
+yarn lerna-changelog
+
+echo "Latest changelog has been printed to your console"
+
 if [[ "$PRE_RELEASE" = true || "$(echo $TAG | grep -E $PRERELEASE_SYNTAX)" == "$TAG" ]]; then
   npm version $TAG --no-push --no-push --no-git-tag-version --exact --ignore-changes -y 
   echo "publishing a new pre release: $TAG" 
